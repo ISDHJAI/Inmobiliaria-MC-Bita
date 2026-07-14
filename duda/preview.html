@@ -1,0 +1,790 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview Duda — Bita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   MC INMOBILIARIA — Modelo Bita · Privada Sotavento
+   Estilo minimalista en morado ciruela
+   ========================================================== */
+
+:root{
+  --plum-950:#33122f;
+  --plum-900:#43173e;
+  --plum-700:#5e2558;   /* morado profundo de marca */
+  --plum-500:#7b366e;   /* morado del banner MC */
+  --plum-300:#b07aa8;
+  --plum-100:#f4eaf2;
+  --wa:#25d366;
+  --wa-deep:#16a34a;
+  --bg:#faf8fa;
+  --ink:#27122a;
+  --ink-soft:#6b5a6c;
+  --line:#e9dfe8;
+  --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Outfit', sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block;}
+a{text-decoration:none;}
+button{font-family:inherit; border:none; background:none; cursor:pointer;}
+
+.wrap{max-width:560px; margin:0 auto;}
+.section{padding:64px 24px 8px;}
+.center{text-align:center; margin-top:34px;}
+
+/* ---------- barra de progreso ---------- */
+.progress{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--plum-700), var(--plum-300));
+  z-index:120; transition:width .1s linear;
+}
+
+/* ---------- header ---------- */
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px;
+  transition:background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
+}
+.topbar-logo{
+  height:44px; filter:brightness(0) invert(1);
+  transition:filter .4s var(--ease), height .4s var(--ease);
+}
+.topbar.solid{
+  background:rgba(250,248,250,.86);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 6px 30px -18px rgba(51,18,47,.35);
+  padding:10px 20px;
+}
+.topbar.solid .topbar-logo{filter:none; height:38px;}
+
+/* ---------- botones WhatsApp ---------- */
+.wa-btn{
+  display:inline-flex; align-items:center; gap:9px;
+  background:linear-gradient(135deg, var(--wa), var(--wa-deep));
+  color:#fff; font-weight:600; font-size:14.5px; letter-spacing:.02em;
+  padding:14px 24px; border-radius:40px;
+  box-shadow:0 12px 28px -10px rgba(22,163,74,.55);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.wa-btn svg{width:19px; height:19px; fill:#fff; flex:none;}
+.wa-btn:active{transform:scale(.95);}
+@media (hover:hover){
+  .wa-btn:hover{transform:translateY(-2px); box-shadow:0 16px 34px -10px rgba(22,163,74,.6);}
+}
+.wa-btn--small{padding:9px 16px; font-size:13px; gap:7px;}
+.wa-btn--small svg{width:16px; height:16px;}
+.wa-btn--big{padding:17px 30px; font-size:16px;}
+.ghost-btn{
+  display:inline-flex; align-items:center;
+  color:#fff; font-weight:500; font-size:14.5px;
+  padding:14px 24px; border-radius:40px;
+  border:1.5px solid rgba(255,255,255,.45);
+  backdrop-filter:blur(4px);
+  transition:background .25s var(--ease), transform .25s var(--ease);
+}
+.ghost-btn:active{transform:scale(.95); background:rgba(255,255,255,.12);}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; height:100svh; min-height:620px; overflow:hidden;
+  display:flex; align-items:flex-end;
+}
+.hero-img{
+  position:absolute; inset:0; width:100%; height:114%; object-fit:cover;
+  will-change:transform;
+  animation:heroZoom 8s var(--ease) forwards;
+}
+@keyframes heroZoom{from{transform:scale(1.12);} to{transform:scale(1.02);}}
+.hero-veil{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(51,18,47,.5) 0%, rgba(51,18,47,.05) 34%, rgba(51,18,47,.32) 62%, rgba(39,14,36,.94) 100%);
+}
+.hero-content{
+  position:relative; z-index:2; width:100%; max-width:560px;
+  margin:0 auto; padding:0 26px 46px; color:#fff;
+}
+.anim-hero{opacity:0; transform:translateY(26px); animation:heroIn .9s var(--ease) var(--d, 0s) forwards;}
+@keyframes heroIn{to{opacity:1; transform:translateY(0);}}
+.hero-eyebrow{
+  font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:#e6cce1; margin-bottom:12px;
+}
+.hero-title{
+  font-size:78px; font-weight:800; line-height:.9; letter-spacing:-.03em; text-transform:uppercase;
+}
+.hero-sub{font-size:15px; font-weight:400; color:rgba(255,255,255,.85); margin-top:12px;}
+.hero-price{margin-top:16px; display:flex; align-items:baseline; gap:10px;}
+.hero-price span{font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.6);}
+.hero-price b{font-size:26px; font-weight:700; color:#fff;}
+.hero-meta{display:flex; gap:24px; margin-top:20px;}
+.hero-meta div b{display:block; font-size:18px; font-weight:700;}
+.hero-meta div small{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:500;}
+.hero-actions{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;}
+.scroll-line{
+  position:absolute; z-index:2; bottom:0; left:50%; transform:translateX(-50%);
+  width:1.5px; height:46px; background:rgba(255,255,255,.22); overflow:hidden;
+}
+.scroll-line i{
+  position:absolute; top:-40%; left:0; width:100%; height:40%;
+  background:#fff; animation:scrollLine 2s var(--ease) infinite;
+}
+@keyframes scrollLine{to{top:110%;}}
+
+/* ---------- tipografía de secciones ---------- */
+.eyebrow{
+  font-size:11.5px; font-weight:700; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--plum-500); margin-bottom:12px;
+}
+.section-title{font-size:28px; font-weight:700; letter-spacing:-.02em; line-height:1.12;}
+.section-sub{font-size:15px; color:var(--ink-soft); line-height:1.65; margin-top:12px; font-weight:300;}
+
+/* ---------- animación reveal ---------- */
+.reveal{
+  opacity:0; transform:translateY(34px); filter:blur(6px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease);
+  transition-delay:var(--rd, 0s);
+}
+.reveal.in{opacity:1; transform:translateY(0); filter:blur(0);}
+
+/* ---------- cifras ---------- */
+.stats-section{padding-top:40px;}
+.stats{
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
+  background:var(--line); border-radius:var(--radius); overflow:hidden;
+  border:1px solid var(--line);
+}
+.stat{background:#fff; padding:26px 18px; text-align:center;}
+.stat b{font-size:27px; font-weight:700; color:var(--plum-700); font-variant-numeric:tabular-nums; display:block;}
+.stat small{font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-top:5px; display:block;}
+
+/* ---------- video ---------- */
+.video-frame{
+  margin-top:26px; border-radius:var(--radius); overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(51,18,47,.45);
+  background:var(--plum-950);
+}
+.video-frame video{width:100%; display:block; aspect-ratio:9/16; max-height:78vh; object-fit:cover;}
+
+/* ---------- planos ---------- */
+.plan-card{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  overflow:hidden; margin-top:26px;
+  box-shadow:0 24px 50px -32px rgba(51,18,47,.35);
+}
+.plan-card header{
+  display:flex; align-items:center; justify-content:space-between; padding:18px 20px 0;
+}
+.plan-card h3{font-size:16px; font-weight:600;}
+.plan-card header span{
+  font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--plum-700); background:var(--plum-100);
+  padding:6px 12px; border-radius:20px;
+}
+.plan-card figure{padding:8px 6px 14px; cursor:zoom-in;}
+.plan-card ul{list-style:none; padding:0 20px 20px; display:flex; flex-wrap:wrap; gap:8px;}
+.plan-card li{
+  font-size:12px; font-weight:400; color:var(--ink-soft);
+  background:var(--bg); border:1px solid var(--line);
+  padding:7px 12px; border-radius:20px;
+}
+
+/* ---------- carrusel ---------- */
+.carousel{
+  display:flex; gap:14px; margin-top:26px;
+  overflow-x:auto; scroll-snap-type:x mandatory;
+  padding:4px 2px 18px; scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.carousel::-webkit-scrollbar{display:none;}
+.carousel .slide{
+  flex:0 0 82%; scroll-snap-align:center;
+  border-radius:18px; overflow:hidden; aspect-ratio:4/5;
+  cursor:zoom-in; position:relative;
+  box-shadow:0 20px 44px -26px rgba(51,18,47,.5);
+  transform:scale(.97); transition:transform .5s var(--ease);
+}
+.carousel .slide.active{transform:scale(1);}
+.carousel .slide img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .8s var(--ease);
+}
+@media (hover:hover){ .carousel .slide:hover img{transform:scale(1.05);} }
+.carousel-nav{
+  display:flex; align-items:center; justify-content:center; gap:18px; margin-top:6px;
+}
+.c-arrow{
+  width:44px; height:44px; border-radius:50%;
+  border:1.5px solid var(--line); background:#fff; color:var(--plum-700);
+  font-size:17px; display:flex; align-items:center; justify-content:center;
+  transition:all .25s var(--ease);
+  box-shadow:0 8px 20px -12px rgba(51,18,47,.3);
+}
+.c-arrow:active{transform:scale(.9); background:var(--plum-100);}
+.c-count{font-size:12.5px; font-weight:600; color:var(--ink-soft); letter-spacing:.08em; min-width:56px; text-align:center; font-variant-numeric:tabular-nums;}
+
+/* ---------- financiamiento ---------- */
+.fin-badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+.fin-badges span{
+  font-size:13px; font-weight:500; color:var(--plum-900);
+  background:#fff; border:1px solid var(--line);
+  padding:10px 18px; border-radius:30px;
+  box-shadow:0 8px 18px -14px rgba(51,18,47,.35);
+}
+
+/* ---------- CTA final ---------- */
+.cta{
+  margin-top:70px; padding:70px 26px 110px; text-align:center; color:#fff;
+  background:
+    radial-gradient(120% 90% at 80% 0%, rgba(176,122,168,.35), transparent 55%),
+    linear-gradient(165deg, var(--plum-700) 0%, var(--plum-950) 78%);
+}
+.cta h2{font-size:28px; font-weight:700; letter-spacing:-.02em;}
+.cta p{font-size:14.5px; font-weight:300; color:rgba(255,255,255,.8); margin-top:12px; line-height:1.6;}
+.cta .wa-btn{margin-top:28px;}
+.footer-brand{margin-top:48px;}
+.footer-brand img{height:64px; margin:0 auto; filter:brightness(0) invert(1); opacity:.95;}
+.footer-brand p{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-top:14px; font-weight:500;}
+
+/* ---------- botón flotante ---------- */
+.fab-wrap{
+  position:fixed; right:18px; bottom:22px; z-index:110;
+  display:flex; align-items:center; gap:12px;
+}
+.fab{
+  width:60px; height:60px; border-radius:50%; position:relative;
+  background:linear-gradient(135deg, var(--wa), var(--wa-deep));
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 14px 34px -8px rgba(22,163,74,.65);
+  transition:transform .25s var(--ease);
+}
+.fab:active{transform:scale(.9);}
+.fab svg{width:30px; height:30px; fill:#fff;}
+.fab-ring{
+  position:absolute; inset:0; border-radius:50%;
+  border:2px solid var(--wa);
+  animation:fabPulse 2.2s var(--ease) infinite;
+}
+@keyframes fabPulse{
+  0%{transform:scale(1); opacity:.8;}
+  70%,100%{transform:scale(1.55); opacity:0;}
+}
+.fab-bubble{
+  position:relative;
+  background:#fff; color:var(--ink); font-size:13.5px; font-weight:500;
+  padding:13px 18px 13px 22px; border-radius:18px 18px 4px 18px;
+  box-shadow:0 18px 40px -14px rgba(51,18,47,.4);
+  border:1px solid var(--line);
+  opacity:0; transform:translateY(12px) scale(.92); transform-origin:bottom right;
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
+  pointer-events:none; max-width:210px;
+}
+.fab-bubble.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+.fab-bubble-close{
+  position:absolute; top:-9px; left:-9px;
+  width:22px; height:22px; border-radius:50%;
+  background:var(--plum-700); color:#fff; font-size:13px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 10px rgba(51,18,47,.4);
+}
+
+/* ---------- lightbox ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:130;
+  background:rgba(30,8,28,.96);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
+}
+.lightbox.show{opacity:1; pointer-events:auto;}
+.lightbox img{
+  max-width:92vw; max-height:84vh; border-radius:12px;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
+  transition:transform .35s var(--ease);
+}
+.lightbox.show img{animation:lbIn .4s var(--ease);}
+@keyframes lbIn{from{transform:scale(.92); opacity:0;} to{transform:scale(1); opacity:1;}}
+.lb-close{
+  position:absolute; top:18px; right:20px; color:#fff; font-size:32px; font-weight:300; z-index:2;
+  width:44px; height:44px;
+}
+.lb-arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(255,255,255,.1); color:#fff; font-size:18px;
+  backdrop-filter:blur(6px); z-index:2;
+  transition:background .25s var(--ease);
+}
+.lb-arrow:active{background:rgba(255,255,255,.25);}
+.lb-prev{left:12px;}
+.lb-next{right:12px;}
+.lb-counter{
+  position:absolute; bottom:22px; left:50%; transform:translateX(-50%);
+  color:rgba(255,255,255,.75); font-size:13px; letter-spacing:.12em; font-variant-numeric:tabular-nums;
+}
+
+/* ---------- pantallas grandes ---------- */
+@media (min-width:720px){
+  .wrap{max-width:680px;}
+  .hero-content{max-width:680px;}
+  .hero-title{font-size:96px;}
+  .stats{grid-template-columns:repeat(4, 1fr);}
+  .carousel .slide{flex:0 0 46%;}
+  .video-frame video{aspect-ratio:16/9; max-height:none;}
+}
+
+/* ---------- reduce motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  *, *::before, *::after{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+  .reveal{opacity:1; transform:none; filter:none;}
+  .anim-hero{opacity:1; transform:none;}
+}
+
+/* --- Ajustes para Duda: si el sitio muestra su propio menu/footer en esta
+       pagina, descomenta la siguiente linea para ocultarlos --- */
+/* #site_header, #site_footer, .dmHeaderContainer, .dmFooterContainer{display:none !important;} */
+</style>
+
+</head>
+<body>
+<!-- Barra de progreso de scroll -->
+<div class="progress" id="progress"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="topbar" id="topbar">
+  <img src="https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/logo-mc.png" alt="MC Inmobiliaria" class="topbar-logo">
+  <a class="wa-btn wa-btn--small wa-link" href="#" aria-label="Agendar cita por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+    Agendar
+  </a>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <img src="https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/fachada.jpg" alt="Fachada del modelo Bita" class="hero-img" id="heroImg">
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow anim-hero" style="--d:.2s">MC Inmobiliaria · Privada Sotavento</p>
+    <h1 class="hero-title anim-hero" style="--d:.35s">Bita</h1>
+    <p class="hero-sub anim-hero" style="--d:.5s">Casa en venta · Villa de Pozos, San Luis Potosí</p>
+    <div class="hero-price anim-hero" style="--d:.62s"><span>Desde</span><b>$3,324,000</b></div>
+    <div class="hero-meta anim-hero" style="--d:.74s">
+      <div><b>150 m²</b><small>Terreno</small></div>
+      <div><b>195.36 m²</b><small>Construcción</small></div>
+      <div><b>3</b><small>Habitaciones</small></div>
+    </div>
+    <div class="hero-actions anim-hero" style="--d:.86s">
+      <a class="wa-btn wa-link" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+        Agendar visita
+      </a>
+      <a class="ghost-btn" href="#galeria">Ver galería</a>
+    </div>
+  </div>
+  <div class="scroll-line" aria-hidden="true"><i></i></div>
+</section>
+
+<main class="wrap">
+
+  <!-- ===================== CIFRAS ===================== -->
+  <section class="section stats-section">
+    <div class="stats reveal">
+      <div class="stat"><b class="count" data-to="150" data-suffix=" m²">0</b><small>Terreno</small></div>
+      <div class="stat"><b class="count" data-to="195.36" data-decimals="2" data-suffix=" m²">0</b><small>Construcción</small></div>
+      <div class="stat"><b class="count" data-to="2">0</b><small>Niveles</small></div>
+      <div class="stat"><b class="count" data-to="3">0</b><small>Habitaciones</small></div>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO ===================== -->
+  <section class="section" id="video">
+    <div class="reveal">
+      <p class="eyebrow">Recorrido</p>
+      <h2 class="section-title">Conoce Bita en movimiento</h2>
+    </div>
+    <div class="video-frame reveal">
+      <video id="reel" src="https://isdhjai.github.io/Inmobiliaria-MC-Bita/videos/reel-bita.mp4" poster="https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/galeria/38.jpg" controls playsinline preload="metadata"></video>
+    </div>
+  </section>
+
+  <!-- ===================== DISTRIBUCIÓN ===================== -->
+  <section class="section" id="distribucion">
+    <div class="reveal">
+      <p class="eyebrow">Distribución</p>
+      <h2 class="section-title">Dos plantas pensadas para tu familia</h2>
+      <p class="section-sub">La planta baja concentra la vida social con cocina, barra y patio; la planta alta reúne el descanso con tres habitaciones y balcón privado.</p>
+    </div>
+
+    <article class="plan-card reveal">
+      <header><h3>Planta Baja</h3><span>Nivel 1</span></header>
+      <figure><img src="https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/planta-baja.jpg" alt="Plano de planta baja del modelo Bita" loading="lazy" decoding="async" data-zoom></figure>
+      <ul>
+        <li>Sala</li><li>Comedor</li><li>Cocina</li><li>Barra desayunador</li>
+        <li>Área de lavado</li><li>Patio</li><li>Hall de T.V.</li><li>Medio baño</li>
+      </ul>
+    </article>
+
+    <article class="plan-card reveal">
+      <header><h3>Planta Alta</h3><span>Nivel 2</span></header>
+      <figure><img src="https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/planta-alta.jpg" alt="Plano de planta alta del modelo Bita" loading="lazy" decoding="async" data-zoom></figure>
+      <ul>
+        <li>Habitación principal con vestidor</li><li>Baño completo y balcón</li>
+        <li>2 habitaciones secundarias</li><li>Baño completo en cada una</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ===================== GALERÍA ===================== -->
+  <section class="section" id="galeria">
+    <div class="reveal">
+      <p class="eyebrow">Galería</p>
+      <h2 class="section-title">Recorre cada espacio</h2>
+      <p class="section-sub">Desliza para explorar la casa. Toca cualquier foto para verla en pantalla completa.</p>
+    </div>
+    <div class="carousel reveal" id="galeriaCarousel" data-label="Galería"></div>
+    <div class="carousel-nav reveal">
+      <button class="c-arrow" data-target="galeriaCarousel" data-dir="-1" aria-label="Anterior">←</button>
+      <span class="c-count" id="galeriaCount"></span>
+      <button class="c-arrow" data-target="galeriaCarousel" data-dir="1" aria-label="Siguiente">→</button>
+    </div>
+    <div class="center reveal">
+      <a class="wa-btn wa-link" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+        Quiero verla en persona
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== AMENIDADES ===================== -->
+  <section class="section" id="amenidades">
+    <div class="reveal">
+      <p class="eyebrow">Amenidades</p>
+      <h2 class="section-title">Vive la privada Sotavento</h2>
+      <p class="section-sub">Juegos infantiles, gimnasio equipado, pérgolas y amplias áreas verdes dentro de una privada en Villa de Pozos.</p>
+    </div>
+    <div class="carousel reveal" id="amenidadesCarousel" data-label="Amenidades"></div>
+    <div class="carousel-nav reveal">
+      <button class="c-arrow" data-target="amenidadesCarousel" data-dir="-1" aria-label="Anterior">←</button>
+      <span class="c-count" id="amenidadesCount"></span>
+      <button class="c-arrow" data-target="amenidadesCarousel" data-dir="1" aria-label="Siguiente">→</button>
+    </div>
+  </section>
+
+  <!-- ===================== FINANCIAMIENTO ===================== -->
+  <section class="section" id="financiamiento">
+    <div class="reveal">
+      <p class="eyebrow">Financiamiento</p>
+      <h2 class="section-title">Aceptamos todo tipo de crédito</h2>
+    </div>
+    <div class="fin-badges reveal">
+      <span>Infonavit</span><span>Cofinavit</span><span>Fovissste</span>
+      <span>Unamos</span><span>Crédito bancario</span>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="cta">
+    <h2 class="reveal">¿Lista para ser tu casa?</h2>
+    <p class="reveal">Agenda tu visita hoy y recorre Bita en persona con nuestro equipo.</p>
+    <a class="wa-btn wa-btn--big wa-link reveal" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+      Agendar visita por WhatsApp
+    </a>
+    <div class="footer-brand reveal">
+      <img src="https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/logo-mc.png" alt="MC Inmobiliaria">
+      <p>MC Inmobiliaria · Privada Sotavento, Villa de Pozos, SLP</p>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== BOTÓN FLOTANTE ===================== -->
+<div class="fab-wrap" id="fab">
+  <div class="fab-bubble" id="fabBubble" role="status">
+    <button class="fab-bubble-close" id="fabBubbleClose" aria-label="Cerrar mensaje">&times;</button>
+    ¿Listo para agendar visita?
+  </div>
+  <a class="fab wa-link" href="#" aria-label="WhatsApp: agendar visita">
+    <span class="fab-ring" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+  </a>
+</div>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">←</button>
+  <img id="lbImg" src="" alt="Foto ampliada">
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">→</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+<script>
+/* ==========================================================
+   MC INMOBILIARIA — Modelo Bita · Privada Sotavento
+   Interacciones y animaciones
+   ========================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- Configuración WhatsApp ---------- */
+  var WA_NUMBER = '524444119732';
+  var WA_MESSAGE = 'Hola MC. Inmobiliaria me gustaria agendar una cita para conocer la privada Sotavento modelo Bita';
+  var WA_URL = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MESSAGE);
+
+  document.querySelectorAll('.wa-link').forEach(function (a) {
+    a.href = WA_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+  });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Galerías: generación de slides ---------- */
+  var GALLERIES = {
+    galeriaCarousel: { dir: 'https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/galeria/', from: 38, to: 64, alt: 'Modelo Bita — foto ' },
+    amenidadesCarousel: { dir: 'https://isdhjai.github.io/Inmobiliaria-MC-Bita/images/amenidades/', from: 25, to: 37, alt: 'Amenidades Sotavento — foto ' }
+  };
+
+  Object.keys(GALLERIES).forEach(function (id) {
+    var cfg = GALLERIES[id];
+    var wrap = document.getElementById(id);
+    if (!wrap) return;
+    var frag = document.createDocumentFragment();
+    for (var i = cfg.from; i <= cfg.to; i++) {
+      var slide = document.createElement('div');
+      slide.className = 'slide';
+      var img = document.createElement('img');
+      img.src = cfg.dir + i + '.jpg';
+      img.alt = cfg.alt + (i - cfg.from + 1);
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      slide.appendChild(img);
+      frag.appendChild(slide);
+    }
+    wrap.appendChild(frag);
+  });
+
+  /* ---------- Carrusel: contador, flechas y slide activo ---------- */
+  function setupCarousel(id, countId) {
+    var el = document.getElementById(id);
+    var count = document.getElementById(countId);
+    if (!el) return;
+    var slides = Array.prototype.slice.call(el.children);
+    var total = slides.length;
+
+    function activeIndex() {
+      var center = el.scrollLeft + el.clientWidth / 2;
+      var best = 0, bestDist = Infinity;
+      slides.forEach(function (s, i) {
+        var mid = s.offsetLeft + s.offsetWidth / 2;
+        var d = Math.abs(mid - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      return best;
+    }
+    function update() {
+      var idx = activeIndex();
+      slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      if (count) count.textContent = (idx + 1) + ' / ' + total;
+    }
+    var ticking = false;
+    el.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(function () { update(); ticking = false; });
+      }
+    }, { passive: true });
+    update();
+
+    el._goto = function (dir) {
+      var idx = Math.min(total - 1, Math.max(0, activeIndex() + dir));
+      var s = slides[idx];
+      el.scrollTo({ left: s.offsetLeft - (el.clientWidth - s.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+  }
+  setupCarousel('galeriaCarousel', 'galeriaCount');
+  setupCarousel('amenidadesCarousel', 'amenidadesCount');
+
+  document.querySelectorAll('.c-arrow').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.target);
+      if (el && el._goto) el._goto(parseInt(btn.dataset.dir, 10));
+    });
+  });
+
+  /* ---------- Reveal con stagger ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  var lastTime = 0, chain = 0;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var now = performance.now();
+      chain = (now - lastTime < 140) ? chain + 1 : 0;
+      lastTime = now;
+      e.target.style.setProperty('--rd', (chain * 0.09) + 's');
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+  revealEls.forEach(function (el) { io.observe(el); });
+
+  /* ---------- Contadores animados ---------- */
+  function animateCount(el) {
+    var to = parseFloat(el.dataset.to);
+    var decimals = parseInt(el.dataset.decimals || '0', 10);
+    var suffix = el.dataset.suffix || '';
+    if (reduceMotion) { el.textContent = to.toFixed(decimals) + suffix; return; }
+    var dur = 1400, start = null;
+    function step(t) {
+      if (!start) start = t;
+      var p = Math.min(1, (t - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 4);
+      el.textContent = (to * eased).toFixed(decimals) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.count').forEach(function (el) { cio.observe(el); });
+
+  /* ---------- Header sólido + barra de progreso + parallax ---------- */
+  var topbar = document.getElementById('topbar');
+  var progress = document.getElementById('progress');
+  var heroImg = document.getElementById('heroImg');
+  var raf = false;
+
+  function onScroll() {
+    var y = window.scrollY;
+    topbar.classList.toggle('solid', y > 40);
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    if (heroImg && !reduceMotion && y < window.innerHeight) {
+      heroImg.style.transform = 'scale(1.02) translateY(' + y * 0.25 + 'px)';
+    }
+    raf = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!raf) { raf = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* ---------- Lightbox con navegación y swipe ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCounter = document.getElementById('lbCounter');
+  var lbGroup = [], lbIndex = 0;
+
+  function openLightbox(group, index) {
+    lbGroup = group; lbIndex = index;
+    renderLb();
+    lightbox.classList.add('show');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function renderLb() {
+    lbImg.src = lbGroup[lbIndex];
+    lbCounter.textContent = lbGroup.length > 1 ? (lbIndex + 1) + ' / ' + lbGroup.length : '';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('show');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + lbGroup.length) % lbGroup.length;
+    renderLb();
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', function (e) { e.stopPropagation(); lbNav(-1); });
+  document.getElementById('lbNext').addEventListener('click', function (e) { e.stopPropagation(); lbNav(1); });
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('show')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  var touchX = null;
+  lightbox.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  lightbox.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 46) lbNav(dx > 0 ? -1 : 1);
+    touchX = null;
+  }, { passive: true });
+
+  // Fotos de carruseles → lightbox por grupo
+  Object.keys(GALLERIES).forEach(function (id) {
+    var wrap = document.getElementById(id);
+    if (!wrap) return;
+    var srcs = Array.prototype.map.call(wrap.querySelectorAll('img'), function (i) { return i.src; });
+    wrap.addEventListener('click', function (e) {
+      var slide = e.target.closest('.slide');
+      if (!slide) return;
+      var idx = Array.prototype.indexOf.call(wrap.children, slide);
+      openLightbox(srcs, idx);
+    });
+  });
+
+  // Planos → lightbox individual
+  document.querySelectorAll('[data-zoom]').forEach(function (img) {
+    img.addEventListener('click', function () { openLightbox([img.src], 0); });
+  });
+
+  /* ---------- Burbuja del botón flotante ---------- */
+  var bubble = document.getElementById('fabBubble');
+  var bubbleClosed = false;
+  setTimeout(function () { if (!bubbleClosed) bubble.classList.add('show'); }, 1800);
+  document.getElementById('fabBubbleClose').addEventListener('click', function (e) {
+    e.preventDefault(); e.stopPropagation();
+    bubbleClosed = true;
+    bubble.classList.remove('show');
+  });
+  // Vuelve a aparecer al llegar a la galería si no la cerraron manualmente
+  var galeriaSec = document.getElementById('galeria');
+  if (galeriaSec) {
+    var bio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !bubbleClosed) bubble.classList.add('show');
+      });
+    }, { threshold: 0.2 });
+    bio.observe(galeriaSec);
+  }
+
+  /* ---------- Video: pausa al salir de pantalla ---------- */
+  var reel = document.getElementById('reel');
+  if (reel) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting && !reel.paused) reel.pause();
+      });
+    }, { threshold: 0.15 });
+    vio.observe(reel);
+  }
+})();
+
+</script>
+
+</body>
+</html>
