@@ -3,602 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Bita — CASTDIM | Sueños Hechos Propiedad</title>
+<title>Bita — MC Inmobiliaria | Privada Sotavento, Villa de Pozos</title>
+<meta name="description" content="Casa modelo Bita en Privada Sotavento, Villa de Pozos, SLP. 3 habitaciones, 2 niveles, 195.36 m² de construcción. Agenda tu visita con MC Inmobiliaria.">
+<link rel="icon" type="image/png" href="images/logo-mc.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --gold:#f7c948;
-    --gold-deep:#e0ad20;
-    --gray-dark:#767571;
-    --gray-mid:#b7b6b2;
-    --bg:#f6f6f4;
-    --white:#ffffff;
-    --ink:#2a2926;
-    --ink-soft:#5c5b57;
-    --line:#e5e4e0;
-    --radius:18px;
-    --ease:cubic-bezier(.22,1,.36,1);
-  }
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Montserrat', sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%; display:block;}
-
-  .wrap{max-width:520px; margin:0 auto; position:relative; background:var(--bg);}
-
-  /* ---------- utility ---------- */
-  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
-  .reveal.in{opacity:1; transform:translateY(0);}
-  .eyebrow{
-    font-size:11.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--gray-dark); display:flex; align-items:center; gap:8px; margin-bottom:10px;
-  }
-  .eyebrow::before{
-    content:""; width:16px; height:2px; background:var(--gold); display:inline-block;
-  }
-  .section{padding:56px 24px;}
-  .section-title{
-    font-size:26px; font-weight:800; letter-spacing:-.01em; line-height:1.15; color:var(--ink);
-  }
-  .section-sub{
-    font-size:14px; color:var(--ink-soft); font-weight:400; line-height:1.6; margin-top:10px;
-  }
-
-  /* ---------- triangle signature ---------- */
-  .tri-mark{position:relative; width:46px; height:34px;}
-  .tri-mark span{
-    position:absolute; bottom:0; width:0; height:0;
-    border-left:13px solid transparent; border-right:13px solid transparent;
-  }
-  .tri-mark span:nth-child(1){border-bottom:23px solid var(--gray-dark); left:0;}
-  .tri-mark span:nth-child(2){border-bottom:23px solid var(--gray-mid); left:10px;}
-  .tri-mark span:nth-child(3){border-bottom:23px solid var(--gold); left:20px;}
-
-  .divider{
-    display:flex; align-items:flex-end; justify-content:center; gap:6px; padding:38px 0 10px;
-  }
-  .divider i{
-    width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent;
-    opacity:.35; transform:translateY(10px); transition:transform .7s var(--ease), opacity .7s var(--ease);
-  }
-  .divider i:nth-child(1){border-bottom:12px solid var(--gray-dark);}
-  .divider i:nth-child(2){border-bottom:16px solid var(--gray-mid);}
-  .divider i:nth-child(3){border-bottom:12px solid var(--gold);}
-  .divider.in i{opacity:1; transform:translateY(0);}
-  .divider.in i:nth-child(2){transition-delay:.08s;}
-  .divider.in i:nth-child(3){transition-delay:.16s;}
-
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative; height:100svh; min-height:640px; overflow:hidden;
-    display:flex; flex-direction:column; justify-content:space-between;
-  }
-  .hero-img{
-    position:absolute; inset:0; width:100%; height:112%; object-fit:cover;
-    transform:scale(1.08) translateY(0); animation:heroZoom 9s var(--ease) forwards;
-  }
-  @keyframes heroZoom{ from{transform:scale(1.14) translateY(0);} to{transform:scale(1.02) translateY(-2%);} }
-  .hero::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(20,19,17,.55) 0%, rgba(20,19,17,.12) 30%, rgba(20,19,17,.35) 62%, rgba(15,14,13,.92) 100%);
-  }
-  .hero-top{
-    position:relative; z-index:2; display:flex; justify-content:center; padding-top:28px;
-    opacity:0; animation:fadeDown 1s var(--ease) .3s forwards;
-  }
-  @keyframes fadeDown{from{opacity:0; transform:translateY(-14px);} to{opacity:1; transform:translateY(0);}}
-  .hero-top img{height:26px; filter:brightness(0) invert(1);}
-
-  .hero-bottom{position:relative; z-index:2; padding:0 26px 34px; color:#fff;}
-  .hero-tagline{
-    height:20px; overflow:hidden; margin-bottom:14px;
-    opacity:0; animation:fadeUp .9s var(--ease) .5s forwards;
-  }
-  @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
-  .hero-tagline ul{list-style:none;}
-  .hero-tagline li{
-    height:20px; font-size:12px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold);
-  }
-  .tick{animation:tick 7s steps(1) infinite;}
-  @keyframes tick{
-    0%,22%{transform:translateY(0);} 25%,47%{transform:translateY(-20px);}
-    50%,72%{transform:translateY(-40px);} 75%,97%{transform:translateY(-60px);} 100%{transform:translateY(0);}
-  }
-  .hero-title{
-    font-size:52px; font-weight:900; line-height:.92; letter-spacing:-.02em; text-transform:uppercase;
-    opacity:0; animation:fadeUp 1s var(--ease) .65s forwards;
-  }
-  .hero-title span{color:var(--gold); display:block; font-size:16px; font-weight:600; letter-spacing:.3em; margin-top:10px; text-transform:uppercase;}
-  .hero-price{
-    margin-top:16px; display:inline-flex; align-items:baseline; gap:8px;
-    opacity:0; animation:fadeUp 1s var(--ease) .78s forwards;
-  }
-  .hero-price small{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gray-mid); font-weight:600;}
-  .hero-price b{font-size:22px; font-weight:800; color:var(--gold);}
-  .hero-meta{
-    display:flex; gap:22px; margin-top:20px; opacity:0; animation:fadeUp 1s var(--ease) .9s forwards;
-  }
-  .hero-meta div b{display:block; font-size:19px; font-weight:800;}
-  .hero-meta div small{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-mid); font-weight:600;}
-
-  .scroll-cue{
-    position:absolute; z-index:2; bottom:14px; left:50%; transform:translateX(-50%);
-    width:22px; height:34px; border:1.5px solid rgba(255,255,255,.5); border-radius:20px;
-  }
-  .scroll-cue::after{
-    content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%);
-    width:4px; height:6px; background:var(--gold); border-radius:2px; animation:cue 1.8s ease-in-out infinite;
-  }
-  @keyframes cue{0%{opacity:1; top:6px;} 60%{opacity:0; top:18px;} 61%{opacity:0; top:6px;} 100%{opacity:1; top:6px;}}
-
-  /* ---------- SPECS ---------- */
-  .specs-strip{
-    display:flex; background:var(--ink); border-radius:var(--radius); overflow:hidden;
-    margin-top:4px;
-  }
-  .spec{
-    flex:1; padding:26px 14px; text-align:center; position:relative;
-  }
-  .spec + .spec::before{
-    content:""; position:absolute; left:0; top:20%; bottom:20%; width:1px; background:rgba(255,255,255,.14);
-  }
-  .spec .num{
-    font-size:30px; font-weight:800; color:#fff; letter-spacing:-.01em; font-variant-numeric:tabular-nums;
-  }
-  .spec .num em{color:var(--gold); font-style:normal; font-size:16px; margin-left:2px;}
-  .spec .lbl{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gray-mid); margin-top:6px; font-weight:600;}
-
-  /* ---------- DISTRIBUTION ---------- */
-  .plans-list{margin-top:26px; display:flex; flex-direction:column; gap:22px;}
-  .plan-card{
-    background:var(--white); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
-    box-shadow:0 18px 40px -22px rgba(30,29,26,.25);
-  }
-  .plan-head{
-    display:flex; align-items:center; justify-content:space-between; padding:16px 18px 0;
-  }
-  .plan-head h3{font-size:15px; font-weight:700;}
-  .plan-head span{
-    font-size:10px; font-weight:700; letter-spacing:.12em; color:var(--gold-deep); background:#fdf3d8;
-    padding:5px 10px; border-radius:20px; text-transform:uppercase;
-  }
-  .plan-card figure{padding:10px 6px 16px; cursor:zoom-in;}
-  .plan-card ul{
-    list-style:none; padding:0 18px 18px; display:flex; flex-wrap:wrap; gap:8px;
-  }
-  .plan-card li{
-    font-size:11px; color:var(--ink-soft); background:var(--bg); border:1px solid var(--line);
-    padding:6px 10px; border-radius:20px; font-weight:500;
-  }
-
-  /* ---------- GALLERY ---------- */
-  .tabs{
-    display:flex; gap:8px; overflow-x:auto; padding-bottom:6px; margin-top:20px; scrollbar-width:none;
-  }
-  .tabs::-webkit-scrollbar{display:none;}
-  .tab{
-    flex:0 0 auto; font-size:12px; font-weight:600; padding:10px 16px; border-radius:30px;
-    background:var(--white); border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap;
-    transition:all .25s var(--ease);
-  }
-  .tab.active{background:var(--ink); color:#fff; border-color:var(--ink);}
-
-  .gallery-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px;
-  }
-  .g-card{
-    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:1/1.05;
-    background:linear-gradient(150deg,#efeeea,#e2e0da);
-    display:flex; align-items:flex-end; cursor:zoom-in;
-  }
-  .g-card.empty{cursor:default;}
-  .g-card.wide{grid-column:span 2; aspect-ratio:16/10;}
-  .g-card img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
-  .g-card .tag{
-    position:relative; z-index:2; width:100%; padding:12px; display:flex; align-items:center; gap:8px;
-    background:linear-gradient(0deg, rgba(20,19,17,.6), transparent);
-  }
-  .g-card .tag em{
-    font-style:normal; width:22px; height:22px; border-radius:50%; background:var(--gold);
-    color:#2a2926; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;
-  }
-  .g-card .tag b{color:#fff; font-size:12.5px; font-weight:700;}
-  .g-card.empty{
-    align-items:center; justify-content:center; flex-direction:column; gap:6px;
-    border:1.5px dashed var(--gray-mid);
-  }
-  .g-card.empty em{
-    background:var(--white); border:1px solid var(--line); color:var(--gray-dark);
-  }
-  .g-card.empty .soon{font-size:10px; color:var(--gray-dark); font-weight:600; letter-spacing:.08em; text-transform:uppercase;}
-  .g-card.empty b{color:var(--ink-soft); font-size:12.5px; font-weight:700;}
-
-  /* ---------- FINANCING ---------- */
-  .fin-card{
-    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
-    padding:26px 22px; margin-top:20px; text-align:center;
-    box-shadow:0 18px 40px -24px rgba(30,29,26,.2);
-  }
-  .fin-card img{margin:18px auto 4px; max-width:100%;}
-  .fin-card p{font-size:13px; color:var(--ink-soft); line-height:1.6;}
-  .fin-badges{
-    display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:20px;
-  }
-  .fin-badges span{
-    font-size:11.5px; font-weight:700; color:var(--ink); background:var(--bg);
-    border:1px solid var(--line); padding:8px 14px; border-radius:20px;
-  }
-
-  /* ---------- CTA / FOOTER ---------- */
-  .cta{
-    background:var(--ink); color:#fff; text-align:center; padding:60px 26px 46px; position:relative; overflow:hidden;
-  }
-  .cta::before{
-    content:""; position:absolute; top:-40px; right:-30px; width:180px; height:180px;
-    background:radial-gradient(circle, rgba(247,201,72,.18), transparent 70%);
-  }
-  .cta h2{font-size:24px; font-weight:800; line-height:1.2; position:relative; z-index:1;}
-  .cta p{font-size:13px; color:var(--gray-mid); margin-top:12px; line-height:1.6; position:relative; z-index:1;}
-  .cta-btn{
-    display:inline-block; margin-top:24px; background:var(--gold); color:#2a2926; font-weight:700;
-    font-size:13px; letter-spacing:.04em; padding:15px 32px; border-radius:30px; text-decoration:none;
-    position:relative; z-index:1; transition:transform .25s var(--ease);
-  }
-  .cta-btn:active{transform:scale(.96);}
-  .footer-logo{margin-top:38px; opacity:.9; position:relative; z-index:1;}
-  .footer-logo img{height:22px; margin:0 auto; filter:brightness(0) invert(1);}
-  .footer-tag{font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gray-mid); margin-top:10px;}
-
-  /* ---------- LIGHTBOX ---------- */
-  .lightbox{
-    position:fixed; inset:0; background:rgba(15,14,13,.94); z-index:99; display:none;
-    align-items:center; justify-content:center; padding:20px;
-  }
-  .lightbox.show{display:flex; animation:fadeIn .25s ease;}
-  @keyframes fadeIn{from{opacity:0;} to{opacity:1;}}
-  .lightbox img{max-height:88vh; border-radius:10px;}
-  .lightbox span{
-    position:absolute; top:24px; right:24px; color:#fff; font-size:26px; font-weight:300;
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="wrap">
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero">
-    <img src="images/fachada.jpg" alt="Fachada Modelo Bita" class="hero-img">
-    <div class="hero-top"><img src="images/logo-castdim.png" alt="CASTDIM"></div>
-    <div class="hero-bottom">
-      <div class="hero-tagline">
-        <ul class="tick">
-          <li>Sueños Hechos Propiedad</li>
-          <li>Sotavento Residencial, San Luis Potosí</li>
-          <li>Tu próximo hogar te espera</li>
-          <li>Sueños Hechos Propiedad</li>
-        </ul>
-      </div>
-      <h1 class="hero-title">Bita<span>Modelo residencial CASTDIM</span></h1>
-      <div class="hero-price"><small>Precio desde</small><b>$3,324,000</b></div>
-      <div class="hero-meta">
-        <div><b>150 m²</b><small>Terreno</small></div>
-        <div><b>195.36 m²</b><small>Construcción</small></div>
-        <div><b>2 niveles</b><small>Distribución</small></div>
-      </div>
+<!-- Barra de progreso de scroll -->
+<div class="progress" id="progress"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="topbar" id="topbar">
+  <img src="images/logo-mc.png" alt="MC Inmobiliaria" class="topbar-logo">
+  <a class="wa-btn wa-btn--small wa-link" href="#" aria-label="Agendar cita por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+    Agendar
+  </a>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <img src="images/fachada.jpg" alt="Fachada del modelo Bita" class="hero-img" id="heroImg">
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow anim-hero" style="--d:.2s">MC Inmobiliaria · Privada Sotavento</p>
+    <h1 class="hero-title anim-hero" style="--d:.35s">Bita</h1>
+    <p class="hero-sub anim-hero" style="--d:.5s">Casa en venta · Villa de Pozos, San Luis Potosí</p>
+    <div class="hero-price anim-hero" style="--d:.62s"><span>Desde</span><b>$3,324,000</b></div>
+    <div class="hero-meta anim-hero" style="--d:.74s">
+      <div><b>150 m²</b><small>Terreno</small></div>
+      <div><b>195.36 m²</b><small>Construcción</small></div>
+      <div><b>3</b><small>Habitaciones</small></div>
     </div>
-    <div class="scroll-cue"></div>
+    <div class="hero-actions anim-hero" style="--d:.86s">
+      <a class="wa-btn wa-link" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+        Agendar visita
+      </a>
+      <a class="ghost-btn" href="#galeria">Ver galería</a>
+    </div>
+  </div>
+  <div class="scroll-line" aria-hidden="true"><i></i></div>
+</section>
+
+<main class="wrap">
+
+  <!-- ===================== CIFRAS ===================== -->
+  <section class="section stats-section">
+    <div class="stats reveal">
+      <div class="stat"><b class="count" data-to="150" data-suffix=" m²">0</b><small>Terreno</small></div>
+      <div class="stat"><b class="count" data-to="195.36" data-decimals="2" data-suffix=" m²">0</b><small>Construcción</small></div>
+      <div class="stat"><b class="count" data-to="2">0</b><small>Niveles</small></div>
+      <div class="stat"><b class="count" data-to="3">0</b><small>Habitaciones</small></div>
+    </div>
   </section>
 
-  <!-- ===================== SPECS ===================== -->
-  <section class="section" style="padding-top:34px;">
-    <div class="reveal specs-strip">
-      <div class="spec"><div class="num">150<em>m²</em></div><div class="lbl">Terreno</div></div>
-      <div class="spec"><div class="num">195<em>.36 m²</em></div><div class="lbl">Construcción</div></div>
-      <div class="spec"><div class="num">2</div><div class="lbl">Niveles</div></div>
+  <!-- ===================== VIDEO ===================== -->
+  <section class="section" id="video">
+    <div class="reveal">
+      <p class="eyebrow">Recorrido</p>
+      <h2 class="section-title">Conoce Bita en movimiento</h2>
+    </div>
+    <div class="video-frame reveal">
+      <video id="reel" src="videos/reel-bita.mp4" poster="images/galeria/38.jpg" controls playsinline preload="metadata"></video>
     </div>
   </section>
-
-  <div class="divider reveal"><i></i><i></i><i></i></div>
 
   <!-- ===================== DISTRIBUCIÓN ===================== -->
-  <section class="section" style="padding-top:6px;">
+  <section class="section" id="distribucion">
     <div class="reveal">
-      <div class="eyebrow">Distribución</div>
-      <h2 class="section-title">Cada espacio, pensado para tu familia</h2>
-      <p class="section-sub">Bita se desarrolla en dos plantas: la planta baja concentra la vida social con cocina, barra y patio; la planta alta reúne el descanso con tres habitaciones y balcón privado.</p>
+      <p class="eyebrow">Distribución</p>
+      <h2 class="section-title">Dos plantas pensadas para tu familia</h2>
+      <p class="section-sub">La planta baja concentra la vida social con cocina, barra y patio; la planta alta reúne el descanso con tres habitaciones y balcón privado.</p>
     </div>
 
-    <div class="plans-list">
-      <div class="plan-card reveal">
-        <div class="plan-head">
-          <h3>Planta Baja</h3>
-          <span>Nivel 1</span>
-        </div>
-        <figure onclick="openLightbox('images/planta-baja.jpg')">
-          <img src="images/planta-baja.jpg" alt="Planta baja Bita">
-        </figure>
-        <ul>
-          <li>Sala</li><li>Comedor</li><li>Cocina</li><li>Barra con desayunador</li>
-          <li>Área de lavado</li><li>Patio</li><li>Hall de T.V.</li><li>Medio baño</li>
-        </ul>
-      </div>
+    <article class="plan-card reveal">
+      <header><h3>Planta Baja</h3><span>Nivel 1</span></header>
+      <figure><img src="images/planta-baja.jpg" alt="Plano de planta baja del modelo Bita" loading="lazy" decoding="async" data-zoom></figure>
+      <ul>
+        <li>Sala</li><li>Comedor</li><li>Cocina</li><li>Barra desayunador</li>
+        <li>Área de lavado</li><li>Patio</li><li>Hall de T.V.</li><li>Medio baño</li>
+      </ul>
+    </article>
 
-      <div class="plan-card reveal">
-        <div class="plan-head">
-          <h3>Planta Alta</h3>
-          <span>Nivel 2</span>
-        </div>
-        <figure onclick="openLightbox('images/planta-alta.jpg')">
-          <img src="images/planta-alta.jpg" alt="Planta alta Bita">
-        </figure>
-        <ul>
-          <li>Habitación principal con vestidor</li><li>Baño completo y balcón</li>
-          <li>2 habitaciones secundarias</li><li>Baño completo en cada una</li>
-        </ul>
-      </div>
-    </div>
+    <article class="plan-card reveal">
+      <header><h3>Planta Alta</h3><span>Nivel 2</span></header>
+      <figure><img src="images/planta-alta.jpg" alt="Plano de planta alta del modelo Bita" loading="lazy" decoding="async" data-zoom></figure>
+      <ul>
+        <li>Habitación principal con vestidor</li><li>Baño completo y balcón</li>
+        <li>2 habitaciones secundarias</li><li>Baño completo en cada una</li>
+      </ul>
+    </article>
   </section>
-
-  <div class="divider reveal"><i></i><i></i><i></i></div>
 
   <!-- ===================== GALERÍA ===================== -->
-  <section class="section" style="padding-top:6px;">
+  <section class="section" id="galeria">
     <div class="reveal">
-      <div class="eyebrow">Galería</div>
-      <h2 class="section-title">Recorre Bita por espacio</h2>
-      <p class="section-sub">Explora cada área. En cuanto nos compartas las fotografías, se colocan directamente en su número correspondiente.</p>
+      <p class="eyebrow">Galería</p>
+      <h2 class="section-title">Recorre cada espacio</h2>
+      <p class="section-sub">Desliza para explorar la casa. Toca cualquier foto para verla en pantalla completa.</p>
     </div>
-
-    <div class="tabs reveal" id="tabs">
-      <button class="tab active" data-filter="all">Todos</button>
-      <button class="tab" data-filter="pb">Planta Baja</button>
-      <button class="tab" data-filter="pa">Planta Alta</button>
+    <div class="carousel reveal" id="galeriaCarousel" data-label="Galería"></div>
+    <div class="carousel-nav reveal">
+      <button class="c-arrow" data-target="galeriaCarousel" data-dir="-1" aria-label="Anterior">←</button>
+      <span class="c-count" id="galeriaCount"></span>
+      <button class="c-arrow" data-target="galeriaCarousel" data-dir="1" aria-label="Siguiente">→</button>
     </div>
-
-    <!--
-      ══════════════════════════════════════════════════════════
-      CÓMO AGREGAR MÁS FOTOS:
-      Cada tarjeta .g-card trae data-cat ("pb" o "pa") para el filtro.
-      Para una tarjeta con foto real:
-        <div class="g-card" data-cat="pb" onclick="openLightbox('images/archivo.jpg')">
-          <img src="images/archivo.jpg" alt="Sala Bita">
-          <div class="tag"><em>1</em><b>Sala</b></div>
-        </div>
-      Si un sector tiene varias fotos, repite la tarjeta con el mismo
-      número/etiqueta y usa otra imagen.
-      ══════════════════════════════════════════════════════════
-    -->
-    <div class="gallery-grid reveal" id="gallery">
-
-      <!-- Fachada -->
-      <div class="g-card wide" data-cat="all" onclick="openLightbox('images/fachada.jpg')">
-        <img src="images/fachada.jpg" alt="Fachada Bita">
-        <div class="tag"><em>0</em><b>Fachada</b></div>
-      </div>
-
-      <!-- 1. Sala -->
-      <div class="g-card wide" data-cat="pb" onclick="openLightbox('images/sala-1.jpg')">
-        <img src="images/sala-1.jpg" alt="Sala Bita">
-        <div class="tag"><em>1</em><b>Sala</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/sala-2.jpg')">
-        <img src="images/sala-2.jpg" alt="Sala Bita, otro ángulo">
-        <div class="tag"><em>1</em><b>Sala</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/sala-3.jpg')">
-        <img src="images/sala-3.jpg" alt="Sala Bita, vista de doble altura">
-        <div class="tag"><em>1</em><b>Sala</b></div>
-      </div>
-
-      <!-- 2. Comedor -->
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/comedor.jpg')">
-        <img src="images/comedor.jpg" alt="Comedor Bita">
-        <div class="tag"><em>2</em><b>Comedor</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/comedor-2.jpg')">
-        <img src="images/comedor-2.jpg" alt="Comedor Bita, otro ángulo">
-        <div class="tag"><em>2</em><b>Comedor</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/comedor-3.jpg')">
-        <img src="images/comedor-3.jpg" alt="Comedor Bita, otro ángulo">
-        <div class="tag"><em>2</em><b>Comedor</b></div>
-      </div>
-
-      <!-- 3. Cocina -->
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/cocina-1.jpg')">
-        <img src="images/cocina-1.jpg" alt="Cocina Bita">
-        <div class="tag"><em>3</em><b>Cocina</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/cocina-2.jpg')">
-        <img src="images/cocina-2.jpg" alt="Cocina Bita, otro ángulo">
-        <div class="tag"><em>3</em><b>Cocina</b></div>
-      </div>
-
-      <!-- 4. Barra / desayunador -->
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/barra-desayunador.jpg')">
-        <img src="images/barra-desayunador.jpg" alt="Barra desayunador Bita">
-        <div class="tag"><em>4</em><b>Barra desayunador</b></div>
-      </div>
-
-      <!-- 5. Patio -->
-      <div class="g-card wide" data-cat="pb" onclick="openLightbox('images/patio-2.jpg')">
-        <img src="images/patio-2.jpg" alt="Patio Bita">
-        <div class="tag"><em>5</em><b>Patio</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/patio-1.jpg')">
-        <img src="images/patio-1.jpg" alt="Patio Bita, otro ángulo">
-        <div class="tag"><em>5</em><b>Patio</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/patio-3.jpg')">
-        <img src="images/patio-3.jpg" alt="Patio Bita, otro ángulo">
-        <div class="tag"><em>5</em><b>Patio</b></div>
-      </div>
-
-      <!-- 6. Hall de T.V (planta baja) -->
-      <div class="g-card wide" data-cat="pb" onclick="openLightbox('images/hall-tv-1.jpg')">
-        <img src="images/hall-tv-1.jpg" alt="Hall de TV Bita">
-        <div class="tag"><em>6</em><b>Hall de T.V.</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/hall-tv-2.jpg')">
-        <img src="images/hall-tv-2.jpg" alt="Hall de TV Bita, otro ángulo">
-        <div class="tag"><em>6</em><b>Hall de T.V.</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/hall-tv-3.jpg')">
-        <img src="images/hall-tv-3.jpg" alt="Hall de TV Bita, otro ángulo">
-        <div class="tag"><em>6</em><b>Hall de T.V.</b></div>
-      </div>
-      <div class="g-card" data-cat="pb" onclick="openLightbox('images/hall-tv-4.jpg')">
-        <img src="images/hall-tv-4.jpg" alt="Hall de TV Bita, otro ángulo">
-        <div class="tag"><em>6</em><b>Hall de T.V.</b></div>
-      </div>
-
-      <!-- 7. Medio baño -->
-      <div class="g-card empty" data-cat="pb"><em>7</em><b>Medio baño</b><span class="soon">Próximamente</span></div>
-
-      <!-- 8. Habitación principal -->
-      <div class="g-card wide" data-cat="pa" onclick="openLightbox('images/habitacion-principal-1.jpg')">
-        <img src="images/habitacion-principal-1.jpg" alt="Habitación principal Bita">
-        <div class="tag"><em>8</em><b>Habitación principal</b></div>
-      </div>
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/habitacion-principal-2.jpg')">
-        <img src="images/habitacion-principal-2.jpg" alt="Habitación principal Bita, otro ángulo">
-        <div class="tag"><em>8</em><b>Habitación principal</b></div>
-      </div>
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/habitacion-principal-3.jpg')">
-        <img src="images/habitacion-principal-3.jpg" alt="Habitación principal Bita, otro ángulo">
-        <div class="tag"><em>8</em><b>Habitación principal</b></div>
-      </div>
-
-      <!-- 9. Vestidor -->
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/vestidor.jpg')">
-        <img src="images/vestidor.jpg" alt="Vestidor Bita">
-        <div class="tag"><em>9</em><b>Vestidor</b></div>
-      </div>
-
-      <!-- 10. Baño principal y balcón -->
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/bano-principal.jpg')">
-        <img src="images/bano-principal.jpg" alt="Baño principal Bita">
-        <div class="tag"><em>10</em><b>Baño principal</b></div>
-      </div>
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/balcon-principal.jpg')">
-        <img src="images/balcon-principal.jpg" alt="Balcón habitación principal Bita">
-        <div class="tag"><em>10</em><b>Balcón</b></div>
-      </div>
-
-      <!-- 11. Recámara secundaria 1 -->
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/recamara-sec1.jpg')">
-        <img src="images/recamara-sec1.jpg" alt="Recámara secundaria 1 Bita">
-        <div class="tag"><em>11</em><b>Recámara sec. 1</b></div>
-      </div>
-
-      <!-- 12. Recámara secundaria 2 -->
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/recamara-sec2-1.jpg')">
-        <img src="images/recamara-sec2-1.jpg" alt="Recámara secundaria 2 Bita">
-        <div class="tag"><em>12</em><b>Recámara sec. 2</b></div>
-      </div>
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/recamara-sec2-2.jpg')">
-        <img src="images/recamara-sec2-2.jpg" alt="Recámara secundaria 2 Bita, otro ángulo">
-        <div class="tag"><em>12</em><b>Recámara sec. 2</b></div>
-      </div>
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/recamara-sec2-kids.jpg')">
-        <img src="images/recamara-sec2-kids.jpg" alt="Recámara secundaria 2 Bita, ambientación">
-        <div class="tag"><em>12</em><b>Recámara sec. 2</b></div>
-      </div>
-
-      <!-- 13. Baños secundarios -->
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/bano-sec.jpg')">
-        <img src="images/bano-sec.jpg" alt="Baño secundario Bita">
-        <div class="tag"><em>13</em><b>Baños sec.</b></div>
-      </div>
-
-      <!-- Extra: pasillo / terraza superior -->
-      <div class="g-card" data-cat="pa" onclick="openLightbox('images/terraza-pasillo.jpg')">
-        <img src="images/terraza-pasillo.jpg" alt="Pasillo exterior planta alta Bita">
-        <div class="tag"><em>+</em><b>Pasillo exterior</b></div>
-      </div>
+    <div class="center reveal">
+      <a class="wa-btn wa-link" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+        Quiero verla en persona
+      </a>
     </div>
   </section>
 
-  <div class="divider reveal"><i></i><i></i><i></i></div>
+  <!-- ===================== AMENIDADES ===================== -->
+  <section class="section" id="amenidades">
+    <div class="reveal">
+      <p class="eyebrow">Amenidades</p>
+      <h2 class="section-title">Vive la privada Sotavento</h2>
+      <p class="section-sub">Juegos infantiles, gimnasio equipado, pérgolas y amplias áreas verdes dentro de una privada en Villa de Pozos.</p>
+    </div>
+    <div class="carousel reveal" id="amenidadesCarousel" data-label="Amenidades"></div>
+    <div class="carousel-nav reveal">
+      <button class="c-arrow" data-target="amenidadesCarousel" data-dir="-1" aria-label="Anterior">←</button>
+      <span class="c-count" id="amenidadesCount"></span>
+      <button class="c-arrow" data-target="amenidadesCarousel" data-dir="1" aria-label="Siguiente">→</button>
+    </div>
+  </section>
 
   <!-- ===================== FINANCIAMIENTO ===================== -->
-  <section class="section" style="padding-top:6px;">
+  <section class="section" id="financiamiento">
     <div class="reveal">
-      <div class="eyebrow">Financiamiento</div>
+      <p class="eyebrow">Financiamiento</p>
       <h2 class="section-title">Aceptamos todo tipo de crédito</h2>
     </div>
-    <div class="fin-card reveal">
-      <p>Trabajamos con Infonavit, Cofinavit, Fovissste, Unamos, crédito BBVA y créditos bancarios tradicionales para que Bita sea tuya de la forma más conveniente.</p>
-      <div class="fin-badges">
-        <span>Infonavit</span>
-        <span>Cofinavit</span>
-        <span>Fovissste</span>
-        <span>Unamos</span>
-        <span>Crédito BBVA</span>
-        <span>Crédito bancario</span>
-      </div>
+    <div class="fin-badges reveal">
+      <span>Infonavit</span><span>Cofinavit</span><span>Fovissste</span>
+      <span>Unamos</span><span>Crédito bancario</span>
     </div>
   </section>
 
-  <!-- ===================== CTA ===================== -->
+  <!-- ===================== CTA FINAL ===================== -->
   <section class="cta">
-    <div class="tri-mark reveal" style="margin:0 auto 22px;"><span></span><span></span><span></span></div>
-    <h2>¿Listo para conocer Bita en persona?</h2>
-    <p>Agenda tu visita y recorre cada espacio de este modelo diseñado para tu estilo de vida.</p>
-    <a href="https://wa.me/524444116075?text=Hola%2C%20me%20interes%C3%B3%20Bita%2C%20%C2%BFcu%C3%A1ndo%20puedo%20conocerlo%3F" class="cta-btn">Agendar visita</a>
-    <div class="footer-logo">
-      <img src="images/logo-castdim.png" alt="CASTDIM">
-      <div class="footer-tag">Sueños Hechos Propiedad</div>
+    <h2 class="reveal">¿Lista para ser tu casa?</h2>
+    <p class="reveal">Agenda tu visita hoy y recorre Bita en persona con nuestro equipo.</p>
+    <a class="wa-btn wa-btn--big wa-link reveal" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+      Agendar visita por WhatsApp
+    </a>
+    <div class="footer-brand reveal">
+      <img src="images/logo-mc.png" alt="MC Inmobiliaria">
+      <p>MC Inmobiliaria · Privada Sotavento, Villa de Pozos, SLP</p>
     </div>
   </section>
+</main>
+
+<!-- ===================== BOTÓN FLOTANTE ===================== -->
+<div class="fab-wrap" id="fab">
+  <div class="fab-bubble" id="fabBubble" role="status">
+    <button class="fab-bubble-close" id="fabBubbleClose" aria-label="Cerrar mensaje">&times;</button>
+    ¿Listo para agendar visita?
+  </div>
+  <a class="fab wa-link" href="#" aria-label="WhatsApp: agendar visita">
+    <span class="fab-ring" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4 0-.2 0-.3-.1-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6a11 11 0 0 0 4.2 3.7c1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+  </a>
 </div>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span>&times;</span>
-  <img id="lightboxImg" src="" alt="">
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">←</button>
+  <img id="lbImg" src="" alt="Foto ampliada">
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">→</button>
+  <div class="lb-counter" id="lbCounter"></div>
 </div>
 
-<script>
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.15});
-  revealEls.forEach(el=>io.observe(el));
-
-  // Tabs filter
-  const tabs = document.querySelectorAll('.tab');
-  const cards = document.querySelectorAll('.g-card');
-  tabs.forEach(tab=>{
-    tab.addEventListener('click', ()=>{
-      tabs.forEach(t=>t.classList.remove('active'));
-      tab.classList.add('active');
-      const f = tab.dataset.filter;
-      cards.forEach(c=>{
-        c.style.display = (f==='all' || c.dataset.cat===f || c.dataset.cat==='all') ? '' : 'none';
-      });
-    });
-  });
-
-  // Lightbox
-  function openLightbox(src){
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightbox').classList.add('show');
-  }
-  function closeLightbox(){
-    document.getElementById('lightbox').classList.remove('show');
-  }
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
