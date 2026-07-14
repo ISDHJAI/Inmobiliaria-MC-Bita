@@ -7,6 +7,4 @@ Landing page del modelo **Bita** en Privada Sotavento, Villa de Pozos, San Luis 
 - Botones de WhatsApp (52 444 411 9732) con mensaje precargado y botón flotante.
 - Galería (27 fotos) y amenidades (13 fotos) con carrusel y lightbox.
 
-> **Nota:** la carpeta `videos/` está fuera del repositorio porque el reel pesa 162 MB
-> (límite de GitHub: 100 MB). Para producción, comprimir el video o servirlo desde un CDN
-> y colocarlo en `videos/reel-bita.mp4`.
+- Video del recorrido en `videos/reel-bita.mp4` (comprimido a 38 MB para web).
